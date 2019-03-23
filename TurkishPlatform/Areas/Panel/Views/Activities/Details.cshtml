@@ -1,0 +1,114 @@
+﻿@model TurkishPlatform.Models.Activity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Activity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Country.CountryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.CountryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.NameSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.NameSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinishTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinishTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Participation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Participation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberofParticipations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberofParticipations)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ActivityId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

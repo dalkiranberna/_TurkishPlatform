@@ -1,0 +1,109 @@
+﻿@using TurkishPlatform.Models
+@model List<Tourism>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+
+
+@section CSS{
+    <link href="~/Content/Restaurant/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/Content/Restaurant/css/main.css" rel="stylesheet" />
+    <link href="~/Content/Restaurant/css/normalize.css" rel="stylesheet" />
+    <link href="~/Content/Restaurant/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/Restaurant/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/Content/Restaurant/css/styleR.css" rel="stylesheet" />
+    <script src="~/Content/Restaurant/js/jquery-3.3.1.min.js"></script>
+    <style>
+        .resim {
+            width: 65% !important;
+        }
+
+            .resim img {
+                height: 100% !important;
+            }
+    </style>
+}
+<section class="restorant">
+    <div class="row">
+        @foreach (Tourism item in Model)
+        {
+            <div class="col-md-6 resim text-center">
+                <div class="product-box-layout3" style="margin-left: 220px;
+    width: 118%;margin-top: 13px;">
+                    <figure class="item-figure" style="margin-top: -59px;">
+                        <a href="#">
+                            <img src="~/Uploads/Tourism/hasankeyf.jpg" />
+                        </a>
+                    </figure>
+                    <div class="item-content text-center">
+
+                        <h3 class="item-title restName text-center" style="margin-top:-59px; position:absolute; margin-left:22px;"> @item.LocationName </h3>
+
+                        <p style="margin-right:10px;margin-left: -64px">
+                            @item.Content
+                        </p>
+                        @{
+                            var Id = Session["EnterID"];
+                            //&UserId = @Id
+                        }
+                        <a href="/TourismTravel/TourismTravelDetails/?id=@item.CountryId&UserId=@Id&locationId=@item.LocationId" style="margin-left:9%;color:black"><b>Ayrıntılarını Gör</b></a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6"></div>}
+    </div>
+</section>
+
+<div>
+    @section Footer{
+        <section class="instagram-feed-wrap">
+            <div class="instagram-feed-title"><a href="#"><i class="fab fa-instagram"></i>Follow On Instagram</a></div>
+            <ul class="instagram-feed-figure">
+                <li>
+                    <a href="single-recipe1.html">
+                        <img src="~/Uploads/Tourism/1.jpg" alt="Social" />
+                    </a>
+                </li>
+                <li>
+                    <a href="single-recipe1.html">
+                        <img src="~/Uploads/Tourism/2.jpg" alt="Social" />
+                    </a>
+                </li>
+                <li>
+                    <a href="single-recipe1.html">
+                        <img src="~/Uploads/Tourism/3.jpg" alt="Social" />
+                    </a>
+                </li>
+
+                <li>
+                    <a href="single-recipe1.html">
+                        <img src="~/Uploads/Tourism/4.jpg" alt="Social" />
+                    </a>
+                </li>
+                <li>
+                    <a href="single-recipe1.html">
+                        <img src="~/Uploads/Tourism/5.jpg" alt="Social" />
+                    </a>
+                </li>
+                <li>
+                    <a href="single-recipe1.html">
+                        <img src="~/Uploads/Tourism/6.jpg" alt="Social" />
+                    </a>
+                </li>
+                <li>
+                    <a href="single-recipe1.html">
+                        <img src="~/Uploads/Tourism/7.jpg" alt="Social" />
+                    </a>
+                </li>
+            </ul>
+        </section>
+    }
+</div>
+
+

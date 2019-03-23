@@ -1,0 +1,122 @@
+﻿@using TurkishPlatform.Models
+@model RestaurantViewModel
+
+@{
+	ViewBag.Title = "Restaurans";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section CSS{
+	<img src="~/Content/Restaurant/img/favicon.png" />
+	<link href="~/Content/Restaurant/css/fontawesome-all.min.css" rel="stylesheet" />
+	<link href="~/Content/Restaurant/css/main.css" rel="stylesheet" />
+	<link href="~/Content/Restaurant/css/normalize.css" rel="stylesheet" />
+
+	<link href="~/Content/Restaurant/css/styleR.css" rel="stylesheet" />
+	<script src="~/Content/Restaurant/js/jquery-3.3.1.min.js"></script>
+
+	<style>
+		.resim {
+			width: 65% !important;
+		}
+
+            .resim img {
+                height: 400px;
+                width: 400px;
+            }
+
+		.restBoyut {
+			margin-right: -190px;
+		}
+	</style>
+}
+
+<section class="restorant">
+	<br />
+	<div class="row restBoyut">
+		@foreach (Restaurant item in ViewBag.AllRestaurant)
+		{
+			<div class="col-md-6 resim">
+				<div class="product-box-layout3">
+					<figure class="item-figure">
+						<a href="single-recipe1.html">
+							<img src="@item.CoverImageURL" alt="Product" />
+						</a>
+					</figure>
+					<div class="item-content">
+						<h3 class="item-title restName"><a href="/Restaurant/RestaurantDetail/?id=@item.RestaurantId">@item.RestaurantName</a></h3>
+						<br /><br />
+						<p>
+							Pro sint falli definitiones noel ei verear intellegatpri civibus
+							consequat efficiantue.Vestibulum ante ipsum primis in fau
+							cibus orci luctus et ultrices posuere cubilia Curae; Nunc
+							mattis turpis id aliquet.
+						</p>
+						<ul class="entry-meta">
+							<li><a href="#"><i class="fas fa-heart"></i><span>03</span> Likes</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6"></div>
+		}
+
+	</div>
+</section>
+
+
+<div>
+	@section Footer{
+		<section class="instagram-feed-wrap">
+			<div class="instagram-feed-title"><a href="#"><i class="fab fa-instagram"></i>Follow On Instagram</a></div>
+			<ul class="instagram-feed-figure">
+				<li>
+					<a href="single-recipe1.html"><img src="/Content/Restaurant/img/social-figure/social-figure1.jpg" alt="Social"></a>
+				</li>
+				<li>
+					<a href="single-recipe1.html"><img src="/Content/Restaurant/img/social-figure/social-figure2.jpg" alt="Social"></a>
+				</li>
+				<li>
+					<a href="single-recipe1.html"><img src="/Content/Restaurant/img/social-figure/social-figure3.jpg" alt="Social"></a>
+				</li>
+				<li>
+					<a href="single-recipe1.html"><img src="/Content/Restaurant/img/social-figure/social-figure4.jpg" alt="Social"></a>
+				</li>
+				<li>
+					<a href="single-recipe1.html"><img src="/Content/Restaurant/img/social-figure/social-figure5.jpg" alt="Social"></a>
+				</li>
+				<li>
+					<a href="single-recipe1.html"><img src="/Content/Restaurant/img/social-figure/social-figure6.jpg" alt="Social"></a>
+				</li>
+				<li>
+					<a href="single-recipe1.html"><img src="/Content/Restaurant/img/social-figure/social-figure7.jpg" alt="Social"></a>
+				</li>
+				<li>
+					<a href="single-recipe1.html"><img src="/Content/Restaurant/img/social-figure/social-figure8.jpg" alt="Social"></a>
+				</li>
+			</ul>
+		</section>
+	}
+
+</div>
+
+
+
+@*<script>
+	$(document).ready(function () {
+		$(".restName").click(function () {
+			var btn = $(this);
+			var id = btn.attr("rel");
+			@Session["RestaurantID"] = id;
+			//$.ajax({
+			//	url: "/Restaurant/RestaurantDetail/" + id,
+			//	method: "GET",
+			//	success: function (r) {
+			//		$(".newDetail")
+					
+			//	}
+			//});
+		});
+	});
+</script>*@

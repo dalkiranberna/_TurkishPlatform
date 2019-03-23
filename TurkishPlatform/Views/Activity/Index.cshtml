@@ -1,0 +1,408 @@
+﻿@using TurkishPlatform.Models
+@model List<Activity>
+@{
+    ViewBag.Title = "Index";
+   
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    @section CSS{
+    <style>
+        @@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
+        @@import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+
+        body {
+            padding: 60px 0px;
+            background-color: rgb(220, 220, 220);
+        }
+
+        .event-list {
+            list-style: none;
+            font-family: 'Lato', sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+
+            .event-list > li {
+                background-color: rgb(255, 255, 255);
+                box-shadow: 0px 0px 5px rgb(51, 51, 51);
+                box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+                padding: 0px;
+                margin: 0px 0px 20px;
+            }
+
+                .event-list > li > time {
+                    display: inline-block;
+                    width: 100%;
+                    color: rgb(255, 255, 255);
+                    background-color: rgb(197, 44, 102);
+                    padding: 5px;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+                .event-list > li:nth-child(even) > time {
+                    background-color: rgb(165, 82, 167);
+                }
+
+                .event-list > li > time > span {
+                    display: none;
+                }
+
+                .event-list > li > time > .day {
+                    display: block;
+                    font-size: 56pt;
+                    font-weight: 100;
+                    line-height: 1;
+                }
+
+                .event-list > li time > .month {
+                    display: block;
+                    font-size: 24pt;
+                    font-weight: 900;
+                    line-height: 1;
+                }
+
+                .event-list > li > img {
+                    width: 100%;
+                }
+
+                .event-list > li > .info {
+                    padding-top: 5px;
+                    text-align: center;
+                }
+
+                    .event-list > li > .info > .title {
+                        font-size: 17pt;
+                        font-weight: 700;
+                        margin: 0px;
+                    }
+
+                    .event-list > li > .info > .desc {
+                        font-size: 13pt;
+                        font-weight: 300;
+                        margin: 0px;
+                    }
+
+                    .event-list > li > .info > ul,
+                    .event-list > li > .social > ul {
+                        display: table;
+                        list-style: none;
+                        margin: 10px 0px 0px;
+                        padding: 0px;
+                        width: 100%;
+                        text-align: center;
+                    }
+
+                .event-list > li > .social > ul {
+                    margin: 0px;
+                }
+
+                    .event-list > li > .info > ul > li,
+                    .event-list > li > .social > ul > li {
+                        display: table-cell;
+                        cursor: pointer;
+                        color: rgb(30, 30, 30);
+                        font-size: 11pt;
+                        font-weight: 300;
+                        padding: 3px 0px;
+                    }
+
+                        .event-list > li > .info > ul > li > a {
+                            display: block;
+                            width: 100%;
+                            color: rgb(30, 30, 30);
+                            text-decoration: none;
+                        }
+
+                    .event-list > li > .social > ul > li {
+                        padding: 0px;
+                    }
+
+                        .event-list > li > .social > ul > li > a {
+                            padding: 3px 0px;
+                        }
+
+                        .event-list > li > .info > ul > li:hover,
+                        .event-list > li > .social > ul > li:hover {
+                            color: rgb(30, 30, 30);
+                            background-color: rgb(200, 200, 200);
+                        }
+
+        .facebook a,
+        .twitter a,
+        .google-plus a {
+            display: block;
+            width: 100%;
+            color: rgb(75, 110, 168) !important;
+        }
+
+        .twitter a {
+            color: rgb(79, 213, 248) !important;
+        }
+
+        .google-plus a {
+            color: rgb(221, 75, 57) !important;
+        }
+
+        .facebook:hover a {
+            color: rgb(255, 255, 255) !important;
+            background-color: rgb(75, 110, 168) !important;
+        }
+
+        .twitter:hover a {
+            color: rgb(255, 255, 255) !important;
+            background-color: rgb(79, 213, 248) !important;
+        }
+
+        .google-plus:hover a {
+            color: rgb(255, 255, 255) !important;
+            background-color: rgb(221, 75, 57) !important;
+        }
+
+        @@media (min-width: 768px) {
+            .event-list > li {
+                position: relative;
+                display: block;
+                width: 100%;
+                height: 120px;
+                padding: 0px;
+            }
+
+                .event-list > li > time,
+                .event-list > li > img {
+                    display: inline-block;
+                }
+
+                .event-list > li > time,
+                .event-list > li > img {
+                    width: 120px;
+                    float: left;
+                }
+
+                .event-list > li > .info {
+                    background-color: rgb(245, 245, 245);
+                    overflow: hidden;
+                }
+
+                .event-list > li > time,
+                .event-list > li > img {
+                    width: 120px;
+                    height: 120px;
+                    padding: 0px;
+                    margin: 0px;
+                }
+
+                .event-list > li > .info {
+                    position: relative;
+                    height: 120px;
+                    text-align: left;
+                    padding-right: 40px;
+                }
+
+                    .event-list > li > .info > .title,
+                    .event-list > li > .info > .desc {
+                        padding: 0px 10px;
+                    }
+
+                    .event-list > li > .info > ul {
+                        position: absolute;
+                        left: 0px;
+                        bottom: 0px;
+                    }
+
+                .event-list > li > .social {
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    display: block;
+                    width: 40px;
+                }
+
+                    .event-list > li > .social > ul {
+                        border-left: 1px solid rgb(230, 230, 230);
+                    }
+
+                        .event-list > li > .social > ul > li {
+                            display: block;
+                            padding: 0px;
+                        }
+
+                            .event-list > li > .social > ul > li > a {
+                                display: block;
+                                width: 40px;
+                                padding: 10px 0px 9px;
+                            }
+        }
+    </style>
+   
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Style the navbar */
+        .topnav {
+            overflow: hidden;
+            background-color: #e9e9e9;
+        }
+
+            /* Navbar links */
+            .topnav a {
+                float: left;
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                /* Navbar links on mouse-over */
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                /* Active/current link */
+                .topnav a.active {
+                    background-color: #2196F3;
+                    color: white;
+                }
+
+            /* Style the input container */
+            .topnav .search-container {
+                float: right;
+            }
+
+            /* Style the input field inside the navbar */
+            .topnav input[type=text] {
+                padding: 6px;
+                margin-top: 8px;
+                font-size: 17px;
+                border: none;
+            }
+
+            /* Style the button inside the input container */
+            .topnav .search-container button {
+                float: right;
+                padding: 6px;
+                margin-top: 8px;
+                margin-right: 16px;
+                background: #ddd;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+            }
+
+                .topnav .search-container button:hover {
+                    background: #ccc;
+                }
+
+        /* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+        @@media screen and (max-width: 600px) {
+            .topnav .search-container {
+                float: none;
+            }
+
+                .topnav a, .topnav input[type=text], .topnav .search-container button {
+                    float: none;
+                    display: block;
+                    text-align: left;
+                    width: 100%;
+                    margin: 0;
+                    padding: 14px;
+                }
+
+            .topnav input[type=text] {
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+        }
+@*</head>*@
+@*<body  >*@
+    <div style="margin-top: 0px;">
+        <div class="topnav">
+
+            <a href="/Activity/Create">Etkinlik Oluştur</a>
+            <a href="/About/Index">Hakkımızda</a>
+            <a href="/Home/Index">İçerik</a>
+            <div class="search-container">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                    <input type="text" placeholder="Etkinlik Ara" name="Search">
+                    <button type="submit" name="search">Ara</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                    <br />
+                    <div class="alert alert-success">
+                        @if (ViewBag.error == null)
+                        {
+                            <span style="font-size:20px"> @ViewBag.aaa</span>}
+                        else
+                        {
+                        <span>@ViewBag.error</span>}
+                    </div>
+                    <br />
+                    <ul class="event-list">
+                        @foreach (var item in ViewBag.Activities)
+                        {
+                            if (item.Permission == true)
+                            {
+                                DateTime baslamaTarihi = item.Date;
+                                DateTime simdi = DateTime.Today;
+
+
+                                TimeSpan kalangun = baslamaTarihi - simdi;
+                                double toplamGun = kalangun.TotalDays;// kalanGun den TotalDays ile sadece toplam gun değerini çekiyoruz.
+
+
+
+                                <li id="Activity">
+                                    <time datetime="@item.Date">
+                                        <span class="day">@item.Date.Day</span>
+                                        <span class="month">@item.Date.ToString("MMMM")</span>
+                                        <span class="year">2014</span>
+                                        <span class="time">ALL DAY</span>
+
+                                    </time>
+
+
+                                    <img alt="Independence Day" src="@item.ImageURL" />
+                                    <div class="info">
+                                       <h2 class="title text-center" style="margin-left:180px;">@item.Title</h2>
+                                        <br />
+                                      
+                                        <p>Etkinliğe kalan  @toplamGun gün </p>
+                                        <a href="/Activity/ActivityDetails?id=@item.ActivityId&kullaniciId=@item.UserId" style="color:black; margin:163px ;background-color:#F5F5F5">
+                                            Etkinlik Ayrıntılarını Gör
+                                        </a>
+                                        <h3>@item.Date.ToShortDateString() </h3>
+                                        <ul>
+                                            <li style="width:40%;">Katılımcı Sayısı: @item.Participants.Count <span class="glyphicon glyphicon-ok"></span></li>
+                                 
+                                        </ul>
+                                    </div>
+
+                                    <div class="social">
+                                      
+                                    </div>
+
+                                </li>
+
+
+                            }
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

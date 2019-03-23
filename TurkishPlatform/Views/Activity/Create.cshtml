@@ -1,0 +1,127 @@
+﻿@using TurkishPlatform.Models
+@model Activity
+
+@{
+    ViewBag.Title = "Create";
+    //Layout= null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section CSS{
+
+
+    @*<img style="opacity:0.7" src="~/Uploads/Activity/cappadocia-3825974_1280.jpg" />*@
+    <style>
+        /*#background {
+           opacity:0.7;
+            background-image: url('../../Uploads/Activity/cappadocia-3825974_1280.jpg');
+        }*/
+        .activitycreate {
+            margin-top: 350px;
+        }
+
+            .activitycreate #label {
+                color: black;
+                font-size: 21px;
+                text-align: center;
+                margin-left: 33%;
+            }
+
+            .activitycreate textarea {
+                margin-left: 105%;
+                height: 100px;
+            }
+
+            .activitycreate input {
+                margin-left: 105%;
+                height: 100px;
+            }
+
+            .activitycreate select {
+                margin-left: 105%;
+                height: 100px;
+                text-align: center !important;
+            }
+
+            .activitycreate .ulke {
+                text-align: center !important;
+            }
+    </style>
+}
+
+
+
+<div class="activitycreate" style="margin-top: 0;
+    padding-top: 0px;">
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary();
+        </div>
+    }
+
+    <form class="form-horizontal" method="post" enctype="multipart/form-data" id="background">
+        @Html.AntiForgeryToken()
+        <fieldset style="margin-top: -99px;">
+            <h2 class="text-center" style="margin-top:90px"> <b> Etkinlik Oluştur </b></h2>
+
+            <hr style="width:500px; color:black" />
+            <div class="form-group" style="margin-top:50px;">
+                <div class="col-md-4">
+                    <input id="event_name" name="name" type="text" required placeholder="Etkinlik İsmi" style="height:50px" class="form-control input-md text-center" />
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    
+                    <input id="textinput" name="date" type="text" required onclick="this.type='date'" onblur="this.type=date" style="height:50px" placeholder="Etkinlik Günü" class="form-control input-md text-center">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <input id="textinput" required name="Kontejyan" type="number" style="height:50px" placeholder="Kontejyan" class="form-control input-md text-center">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <input id="textinput" name="StartTime" type="text" onclick="this.type='time'" onblur="this.type='text'" style="height:50px" placeholder="Başlangıç Saati" class="form-control input-md text-center a">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <input id="textinput" name="FinishTime" type="text" required onclick="this.type='time'" onblur="this.type='text'" style="height:50px" placeholder="Bitiş Saati" class="form-control input-md text-center">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="text-center" style="width:550px;text-align-last: center; ">
+                    <input id="textinput" required name="Image" type="file" placeholder="Resim" style="height:50px;margin-left: 389px;
+    width: 359px;" class="form-control input-md text-center">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <textarea class="form-control text-center" id="textarea" placeholder="İcerik" required name="Content" style="height:150px"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <textarea class="form-control text-center" id="textarea" name="Address" style="height:150px" required placeholder="Adres"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" name="Insert" style="width:32%;  margin-right:406px;">Kaydet</button>
+
+            </div>
+
+        </fieldset>
+
+    </form>
+
+</div>
+
